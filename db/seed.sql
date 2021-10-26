@@ -1,4 +1,4 @@
-USE merc_db
+USE merc_db;
 
 -- mech pilot, tech, combat coordinator, freakbeast handler, action man
 
@@ -9,22 +9,22 @@ USE merc_db
 INSERT INTO department (dept)
 VALUES  ("Frontline"),
         ("Command" ),
-        ("Logistics")
+        ("Logistics");
 
 INSERT INTO roles (title, salary, dept_id)
-VALUES  ("1Mech Warrior", 125000, 1),
-        ("2Infantry TL", 50000, 1),
-        ("3Strategios", 250000, 2),
-        ("4BattleGroup TL" 500000, 2),
-        ("5Drone Controller", 75000, 2),
-        ("6Mech Tech" 45000, 3),
-        ("7Drone Loader", 25000, 3),
-        ("8Conscript Porter", 100, 3),
-        ("9Armory Majus", 60000, 2),
+VALUES  ("Mech Warrior", 125000, 1),
+        ("Infantry TL", 50000, 1),
+        ("Strategios", 250000, 2),
+        ("BattleGroup TL", 500000, 2),
+        ("Drone Controller", 75000, 2),
+        ("Mech Tech", 45000, 3),
+        ("Drone Loader", 25000, 3),
+        ("Conscript Porter", 100, 3),
+        ("Armory Majus", 60000, 2);
 
 -- https://thestoryshack.com/tools/human-name-generator/
 -- manager_id = employee actual id not role -------------thanks Ethan
-INSERT INTO employee (first_name, last_name, roles_id, manager_id, ) 
+INSERT INTO employee (first_name, last_name, roles_id, manager_id ) 
 VALUES  ("Kell", "Anders", 3, NULL),
         ("Therron", "Lankrit", 4, 1),
         ("Marcelo", "Cindervale", 1, 2),
@@ -66,4 +66,4 @@ VALUES  ("Kell", "Anders", 3, NULL),
         ("Georgio", "Cuey", 8, 15 ),
         ("George", "Ripri", 8, 15 ),
         ("Arvi", "Chai", 8, 15 ),
-        ("Stanwyck", "Marlo", 8, 15 ),
+        ("Stanwyck", "Marlo", 8, 15 );

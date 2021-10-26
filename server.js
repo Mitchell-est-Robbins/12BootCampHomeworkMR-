@@ -92,7 +92,9 @@ switch (response.choice) {
 
 
 const showDepartment = async () => {
-    const 
+    const section= await db.promise().query("SELECT * FROM department ")
+    console.table(department[0]);
+    startMenu()
 }
 
 // if statements for the answers 

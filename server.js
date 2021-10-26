@@ -1,12 +1,12 @@
-const inquirer = require('inquirer');
-const mysql = require('mysql2');
-const consoleTable = require ('console.table');
 const express = require('express');
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const consoleTable = require ('console.table');
 // const hide = require ('hide-secrets'); 
 //investigate asciiart.. or whatever it was called
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+// const PORT = process.env.PORT || 3001;
+// const app = express();
 
 
 //from class 
@@ -52,31 +52,31 @@ const startMenu = async () => {
 
 //inspired by working with Chuck, 
 switch (response.choice) {
-    case "VIEW ALL SECTIONS":
+        case "VIEW ALL SECTIONS":
         showDepartment();
         break;
 
-    case "VIEW ALL ROLES":
+        case "VIEW ALL ROLES":
         showRole();
         break;
 
-    case "VIEW ALL EMPLOYEES":
+        case "VIEW ALL EMPLOYEES":
         showEmployees();
         break;
 
-    case "ADD SECTION":
+        case "ADD SECTION":
         plusDepartment();
         break;
 
-    case "ADD ROLE":
+        case "ADD ROLE":
         plusRole();
         break;
 
-    case "ADD EMPLOYEE":
+        case "ADD EMPLOYEE":
         plusEmployee();
         break;
 
-    case "UPDATE EMPLOYEE":
+        case "UPDATE EMPLOYEE":
         updateEmployee();
         break;
     }
@@ -90,32 +90,37 @@ switch (response.choice) {
     //function for menu()
 // }
 
-
-const showDepartment = async () => {
-    const section= await db.promise().query("SELECT * FROM department ")
-    console.table(department[0]);
-    startMenu()
-}
-
-// if statements for the answers 
-// consts with async and awaits...
-// select all,
-
 // // departments,
 // WHEN I choose to view all departments
 // THEN I am presented with a formatted table showing department names and department ids
+
+const showDepartment = async () => {
+    const section= await db.promise().query("SELECT * FROM department")
+    console.table(section[0]);
+    startMenu()
+};
 
 // roles,
 // /WHEN I choose to view all roles
 // THEN I am presented with the job title, role id, the department that role belongs to,
 //  and the salary for that role
 
+const showRole = async () => {
+    const section= await db.promise().query("SELECT * FROM roles")
+    console.table(section[0]);
+    startMenu()
+};
 // employees,
 // WHEN I choose to view all employees
 // THEN I am presented with a formatted table showing employee data,
 //  including employee ids, first names, last names, job titles, departments, salaries,
 //   and managers that the employees report to
 
+const showEmployees = async () => {
+    const section= await db.promise().query("SELECT * FROM employee")
+    console.table(section[0]);
+    startMenu()
+};
 
 //each one of these will be a prompt string-------------------------------------
 // add departments
@@ -139,16 +144,17 @@ const showDepartment = async () => {
 
 
 
-
+startMenu()
 
 
 //boiler plate for connection stuff.... may not be needed. 
 // Default response for any other request (Not Found)
-app.use((req, res) => {
-    res.status(404).end();
-  });
+
+// app.use((req, res) => {
+//     res.status(404).end();
+//   });
   
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+//   app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+//   });
   

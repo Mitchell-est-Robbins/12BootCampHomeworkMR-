@@ -12,15 +12,16 @@ VALUES  ("Frontline"),
         ("Logistics");
 
 INSERT INTO roles (title, salary, dept_id)
-VALUES  ("Mech Warrior", 125000, 1),
-        ("Infantry TL", 50000, 1),
-        ("Strategios", 250000, 2),
+VALUES  
         ("BattleGroup TL", 500000, 2),
-        ("Drone Controller", 75000, 2),
-        ("Mech Tech", 45000, 3),
-        ("Drone Loader", 25000, 3),
-        ("Conscript Porter", 100, 3),
+        ("Strategios", 250000, 2),
+        ("Mech Warrior", 125000, 1),
+        ("Infantry TL", 50000, 1),
         ("Armory Majus", 60000, 2);
+        ("Drone Controller", 75000, 2),
+        ("Drone Loader", 25000, 3),
+        ("Mech Tech", 45000, 3),
+        ("Conscript Porter", 100, 3),
 
 -- https://thestoryshack.com/tools/human-name-generator/
 -- manager_id = employee actual id not role -------------thanks Ethan

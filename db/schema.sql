@@ -1,21 +1,17 @@
 
-DROP DATABASE IF EXISTS xxxxxxxx_db;
+DROP DATABASE IF EXISTS merc_db;
 -- Creates the "books_db" database --
-CREATE DATABASE xxxxxxxxx_db;
-USE xxxxxx_db;
+CREATE DATABASE merc_db;
+USE merc_db;
 
 -- create department
 -- create roles
 -- create employees
 
-
--- * `department`
-
---     * `id`: `INT PRIMARY KEY`
-
---     * `name`: `VARCHAR(30)` to hold department name
-
-
+CREATE TABLE department (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    dept VARCHAR (50)
+);
 
 
 -- * `role`
@@ -27,7 +23,13 @@ USE xxxxxx_db;
 --     * `salary`: `DECIMAL` to hold role salary
 
 --     * `department_id`: `INT` to hold reference to department role belongs to
+CREATE TABLE roles (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR (50) NOT NULL,
+    salary DECIMAL,
+    department_id INT,
 
+);
 
 
 
@@ -42,3 +44,11 @@ USE xxxxxx_db;
 --     * `role_id`: `INT` to hold reference to employee role
 
 --     * `manager_id`: `INT` to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT,
+    manager_id INT,
+
+);

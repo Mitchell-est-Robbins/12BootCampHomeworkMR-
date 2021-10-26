@@ -1,5 +1,5 @@
 
-DROP DATABASE IF EXISTS merc_db;
+-- DROP DATABASE IF EXISTS merc_db;
 -- Creates the "books_db" database --
 CREATE DATABASE merc_db;
 USE merc_db;
@@ -28,6 +28,9 @@ CREATE TABLE roles (
     title VARCHAR (50) NOT NULL,
     salary DECIMAL,
     department_id INT,
+    FOREIGN KEY (dept_id)
+    REFERENCES department(id)
+    ON DELETE SET NULL
 
 );
 
@@ -50,5 +53,11 @@ CREATE TABLE employee (
     last_name VARCHAR(30) NOT NULL,
     role_id INT,
     manager_id INT,
-
+    FOREIGN KEY (roles_id)
+    REFERENCES roles(id)
+    ON DELETE SET NULL
+    FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL
+    
 );

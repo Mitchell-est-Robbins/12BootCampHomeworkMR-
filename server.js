@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const consoleTable = require ('console.table');
-const hide = require ('hide-secrets');
 const express = require('express');
+// const hide = require ('hide-secrets'); 
 //investigate asciiart.. or whatever it was called
 
 const PORT = process.env.PORT || 3001;
@@ -18,7 +18,7 @@ const db = mysql.createConnection(
       user: 'root',
       // MySQL password
       password: 'Password1234',
-      database: 'classlist_db'  //---------------------------need to update
+      database: 'merc_db'  //---------------------------need to update
     },
     console.log(`Connected to the database.`)
 );
@@ -26,11 +26,76 @@ const db = mysql.createConnection(
 //--------------------above is setup--------------------------
 
 
+
 //console log a intro... everything is going on in the console
 // inquirer prompts, list
+// WHEN I start the application
+// THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
+const startMenu = async () => {
+    const response = await inquirer.prompt([
+        {
+        type: "list",
+        name: "choice",
+        message: "ATTENTION THIS INFO IS CLASSIFIED",
+        choices: [
+            "VIEW ALL SECTIONS",
+            "VIEW ALL ROLES",
+            "VIEW ALL EMPLOYEES",
+            "ADD SECTION",
+            "ADD ROLE",
+            "ADD EMPLOYEE",
+            "UPDATE EMPLOYEE",
+            "EXIT"
+                ]
+        }   
+    ])
+
+//inspired by working with Chuck, 
+switch (response.choice) {
+    case "VIEW ALL SECTIONS":
+        showDepartment();
+        break;
+
+    case "VIEW ALL ROLES":
+        showRole();
+        break;
+
+    case "VIEW ALL EMPLOYEES":
+        showEmployees();
+        break;
+
+    case "ADD SECTION":
+        plusDepartment();
+        break;
+
+    case "ADD ROLE":
+        plusRole();
+        break;
+
+    case "ADD EMPLOYEE":
+        plusEmployee();
+        break;
+
+    case "UPDATE EMPLOYEE":
+        updateEmployee();
+        break;
+    }
+
+};
+
+
+// const xxx =async () => {
+    // const xxx = await db.promise().query ()
+    // console.table(xxx)
+    //function for menu()
+// }
+
+
+const showDepartment = async () => {
+    const 
+}
 
 // if statements for the answers 
-
 // consts with async and awaits...
 // select all,
 
@@ -72,11 +137,6 @@ const db = mysql.createConnection(
 
 
 
-// const xxx =async () => {
-    // const xxx = await db.promise().query ()
-    // console.table(xxx)
-    //function for menu()
-// }
 
 
 

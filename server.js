@@ -84,11 +84,6 @@ switch (response.choice) {
 };
 
 
-// const xxx =async () => {
-    // const xxx = await db.promise().query ()
-    // console.table(xxx)
-    //function for menu()
-// }
 
 // // departments,
 // WHEN I choose to view all departments
@@ -97,6 +92,9 @@ switch (response.choice) {
 const showDepartment = async () => {
     const section= await db.promise().query("SELECT * FROM department")
     console.table(section[0]);
+    console.log ("====================================================")
+    console.log ("===------------SECTION DETAILS-------------------===")
+    console.log ("====================================================")
     startMenu()
 };
 
@@ -106,8 +104,11 @@ const showDepartment = async () => {
 //  and the salary for that role
 
 const showRole = async () => {
-    const section= await db.promise().query("SELECT * FROM roles")
-    console.table(section[0]);
+    const role= await db.promise().query("SELECT roles.id, roles.title, roles.salary, department.dept FROM roles JOIN department ON roles.dept_id=department.id")
+    console.table(role[0]);
+    console.log ("====================================================")
+    console.log ("===------------ROLE DETAILS----------------------===")
+    console.log ("====================================================")
     startMenu()
 };
 // employees,
@@ -116,26 +117,93 @@ const showRole = async () => {
 //  including employee ids, first names, last names, job titles, departments, salaries,
 //   and managers that the employees report to
 
-const showEmployees = async () => {
-    const section= await db.promise().query("SELECT * FROM employee")
-    console.table(section[0]);
+const showEmployees = async () => {  //----------need to figure manager out-------
+    const employee= await db.promise().query("SELECT employee.id, employee.first_name, employee.last_name, roles.title, roles.salary, department.dept FROM employee JOIN roles on employee.roles_id=roles.id JOIN department ON department.id= roles.dept_id")
+    console.table(employee[0]);
+    console.log ("====================================================")
+    console.log ("===------------EMPLOYEE DETAILS------------------===")
+    console.log ("====================================================")
     startMenu()
 };
+
+
 
 //each one of these will be a prompt string-------------------------------------
 // add departments
 // WHEN I choose to add a department
 // THEN I am prompted to enter the name of the department and that department is added to the database
+const plusDepartment = async () => {
+    const newDepo= await inquirer.prompt([
+        {
+            type:"input",
+            name: "dept",
+            Message: "INPUT NEW SECTION"
+        }
 
-// add roles,
+    ]);  
+    //put it in the db 
+}
+
+
+// add roles,============================================================================================
 // WHEN I choose to add a role
 // THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
+const plusRole = async () => {
+    const newRole= await inquirer.prompt([
+        {
+            type:"input",
+            name: "title",
+            Message: "INPUT NEW ROLE"
+        },
+        {
+            type:"input",
+            name: "salary",
+            Message: "INPUT SALARY (just numbers)"
+        },
+        {
+            type:"input",
+            name: "dept_id",
+            Message: "INPUT SECTION ID "
+        },
 
-// add employees
+    ]);  
+    //put it in the db 
+}
+
+// add employees====================================================================================================
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+const plusEmployee = async () => {
+    const newEmployee= await inquirer.prompt([
+        {
+            type:"input",
+            name: "first_name",
+            Message: "INPUT FIRST NAME"
+        },
+        {
+            type:"input",
+            name: "last_name",
+            Message: "INPUT LAST NAME or CALLSIGN"
+        },
+        {
+            type:"input",
+            name: "role",
+            Message: "INPUT ROLE"
+        },
+        {
+            type:"input",
+            name: "manager",
+            Message: "INPUT MANAGER"
+        },
 
-//update an existing employee
+    ]);  
+    //put it in the db 
+}
+
+
+
+//update an existing employee=======================================================================================
+// add status of dead?? 
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 

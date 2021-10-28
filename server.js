@@ -44,7 +44,7 @@ const startMenu = async () => {
             "ADD SECTION",
             "ADD ROLE",
             "ADD EMPLOYEE",
-            "UPDATE EMPLOYEE",
+            // "UPDATE EMPLOYEE",
             "EXIT"
                 ]
         }   
@@ -76,9 +76,9 @@ switch (response.choice) {
         plusEmployee();
         break;
 
-        case "UPDATE EMPLOYEE":
-        updateEmployee();
-        break;
+        // case "UPDATE EMPLOYEE":
+        // updateEmployee();
+        // break;
     }
 
 };
@@ -141,7 +141,10 @@ const plusDepartment = async () => {
         }
 
     ]);  
-    //put it in the db 
+   await db.promise().query("INSERT INTO department SET?", newDepo)  //tutor assisted in understanding this 
+   console.log ("====^^             SECTION ADDED              ^^====")
+   console.log ("====================================================")
+   startMenu()
 }
 
 
@@ -158,16 +161,19 @@ const plusRole = async () => {
         {
             type:"input",
             name: "salary",
-            Message: "INPUT SALARY (just numbers)"
+            Message: "INPUT NUMERIC SALARY"
         },
         {
-            type:"input",
+            type:"input",                 //----------somehow call back to db and select from list
             name: "dept_id",
             Message: "INPUT SECTION ID "
         },
 
     ]);  
-    //put it in the db 
+    await db.promise().query("INSERT INTO roles SET?", newRole)  
+    console.log ("====^^              ROLE ADDED                ^^====")
+    console.log ("====================================================")
+    startMenu()
 }
 
 // add employees====================================================================================================
@@ -197,7 +203,10 @@ const plusEmployee = async () => {
         },
 
     ]);  
-    //put it in the db 
+    await db.promise().query("INSERT INTO employee SET?", newEmployee)  
+    console.log ("====^^           EMPLOYEE ADDED               ^^====")
+    console.log ("====================================================")
+    startMenu()
 }
 
 

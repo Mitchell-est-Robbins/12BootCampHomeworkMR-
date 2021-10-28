@@ -3,16 +3,16 @@ USE merc_db;
 -- add action man
 
 INSERT INTO department (dept)
-VALUES  ("Frontline"),
-        ("Command" ),
+VALUES  ("Command" ),
+        ("Frontline" ),
         ("Logistics");
 
 INSERT INTO roles (title, salary, dept_id)
 VALUES  
-        ("BattleGroup TL", 500000, 2),
-        ("Strategios", 250000, 2),
-        ("Mech Warrior", 125000, 1),
-        ("Infantry TL", 50000, 1),
+        ("Strategios", 500000, 1),
+        ("BattleGroup TL", 250000, 1),
+        ("Mech Warrior", 125000, 2),
+        ("Infantry TL", 50000, 2),
         ("Armory Majus", 60000, 2),
         ("Drone Controller", 75000, 2),
         ("Drone Loader", 25000, 3),

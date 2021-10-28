@@ -236,7 +236,7 @@ const updateEmployee = async () => {
             choices: roles[0].map((obj) => ({name: obj.title, value: obj.id}))
         },
     ]); //got some pointers from chuck on how to structure this
-    await db.promise().query("UPDATE employee SET roles_id = ? WHERE last_name= ? ",[updateEmp.roles_id, updateEmp.last_name]) //might be id
+    await db.promise().query("UPDATE employee SET roles_id = ? WHERE id = ? ", [updateEmp.roles_id, updateEmp.last_name])  //got help from BOOTCAMP SPOT
     console.log ("====^^               UPDATED                  ^^====")
     console.log ("====================================================")
     startMenu()    

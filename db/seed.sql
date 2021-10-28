@@ -22,7 +22,7 @@ VALUES
 -- https://thestoryshack.com/tools/human-name-generator/
 -- manager_id = employee actual id not role -------------thanks Ethan
 INSERT INTO employee (first_name, last_name, roles_id, manager_id ) 
-VALUES  ("Kell", "Anders", 1, NULL),
+VALUES  ("Kell", "Anders", 1, 1),
         ("Therron", "Lankrit", 2, 1),
         ("Marcelo", "Cindervale", 3, 2),
         ("Hollis", "MINI CHUNGUS", 3, 2),

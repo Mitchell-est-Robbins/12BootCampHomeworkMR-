@@ -44,7 +44,7 @@ const startMenu = async () => {
             "ADD SECTION",
             "ADD ROLE",
             "ADD EMPLOYEE",
-            // "UPDATE EMPLOYEE",
+            "UPDATE EMPLOYEE",
             "EXIT"
                 ]
         }   
@@ -76,9 +76,9 @@ switch (response.choice) {
         plusEmployee();
         break;
 
-        // case "UPDATE EMPLOYEE":
-        // updateEmployee();
-        // break;
+        case "UPDATE EMPLOYEE":
+        updateEmployee();
+        break;
     }
 
 };
@@ -152,6 +152,7 @@ const plusDepartment = async () => {
 // WHEN I choose to add a role
 // THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
 const plusRole = async () => {
+    const section= await db.promise().query("SELECT * FROM department")
     const newRole= await inquirer.prompt([
         {
             type:"input",
@@ -164,10 +165,11 @@ const plusRole = async () => {
             Message: "INPUT NUMERIC SALARY"
         },
         {
-            type:"input",                 //----------somehow call back to db and select from list
+            type:"list",                 //-----got pointers on map functions from chuck-----somehow call back to db and select from list
             name: "dept_id",
-            Message: "INPUT SECTION ID "
-        },
+            Message: " SELECT THE SECTION ",
+            choices: section[0].map((dept) => ({name: dept.dept, value: dept.id}))
+        },                        //obj name...     obj.sublane
 
     ]);  
     await db.promise().query("INSERT INTO roles SET?", newRole)  
@@ -180,6 +182,8 @@ const plusRole = async () => {
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 const plusEmployee = async () => {
+    const roles= await db.promise().query("SELECT * FROM roles")
+    const employee= await db.promise().query("SELECT * FROM employee")
     const newEmployee= await inquirer.prompt([
         {
             type:"input",
@@ -192,14 +196,16 @@ const plusEmployee = async () => {
             Message: "INPUT LAST NAME or CALLSIGN"
         },
         {
-            type:"input",
-            name: "role",
-            Message: "INPUT ROLE"
+            type:"list",
+            name: "roles_id",
+            Message:"INPUT ROLE",
+            choices: roles[0].map((obj) => ({name: obj.title, value: obj.id}))
         },
         {
-            type:"input",
-            name: "manager",
-            Message: "INPUT MANAGER"
+            type:"list",
+            name: "manager_id",
+            Message: "INPUT MANAGER",
+            choices: employee[0].map((obj) => ({name: obj.last_name, value: obj.id}))
         },
 
     ]);  
@@ -211,16 +217,38 @@ const plusEmployee = async () => {
 
 
 
-//update an existing employee=======================================================================================
+// update an existing employee=======================================================================================
 // add status of dead?? 
+const updateEmployee = async () => {
+    const employee= await db.promise().query("SELECT * FROM employee")
+    const roles= await db.promise().query("SELECT * FROM roles")
+    const updateEmp= await inquirer.prompt([
+        {
+            type:"list",
+            name: "last_name",
+            Message: "SELECT LAST NAME",
+            choices: employee[0].map((obj) => ({name: obj.last_name, value: obj.id}))
+        },
+        {
+            type:"list",
+            name: "roles_id",
+            Message: "SELECT ROLE",
+            choices: roles[0].map((obj) => ({name: obj.title, value: obj.id}))
+        },
+    ]); //got some pointers from chuck on how to structure this
+    await db.promise().query("UPDATE employee SET roles_id = ? WHERE last_name= ? ",[updateEmp.roles_id, updateEmp.last_name]) //might be id
+    console.log ("====^^               UPDATED                  ^^====")
+    console.log ("====================================================")
+    startMenu()    
+}
+    
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 
 
 
 
-
-
+//================START WITH NODE=======================================================================================
 startMenu()
 
 

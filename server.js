@@ -137,7 +137,7 @@ const plusDepartment = async () => {
         {
             type:"input",
             name: "dept",
-            Message: "INPUT NEW SECTION"
+            message: "INPUT NEW SECTION"
         }
 
     ]);  
@@ -157,17 +157,17 @@ const plusRole = async () => {
         {
             type:"input",
             name: "title",
-            Message: "INPUT NEW ROLE"
+            message: "INPUT NEW ROLE"
         },
         {
             type:"input",
             name: "salary",
-            Message: "INPUT NUMERIC SALARY"
+            message: "INPUT NUMERIC SALARY"
         },
         {
             type:"list",                 //-----got pointers on map functions from chuck-----somehow call back to db and select from list
             name: "dept_id",
-            Message: " SELECT THE SECTION ",
+            message: " SELECT THE SECTION ",
             choices: section[0].map((dept) => ({name: dept.dept, value: dept.id}))
         },                        //obj name...     obj.sublane
 
@@ -188,23 +188,23 @@ const plusEmployee = async () => {
         {
             type:"input",
             name: "first_name",
-            Message: "INPUT FIRST NAME"
+            message: "INPUT FIRST NAME"
         },
         {
             type:"input",
             name: "last_name",
-            Message: "INPUT LAST NAME or CALLSIGN"
+            message: "INPUT LAST NAME or CALLSIGN"
         },
         {
             type:"list",
             name: "roles_id",
-            Message:"INPUT ROLE",
+            message:"INPUT ROLE",
             choices: roles[0].map((obj) => ({name: obj.title, value: obj.id}))
         },
         {
             type:"list",
             name: "manager_id",
-            Message: "INPUT MANAGER",
+            message: "INPUT MANAGER",
             choices: employee[0].map((obj) => ({name: obj.last_name, value: obj.id}))
         },
 
@@ -226,13 +226,13 @@ const updateEmployee = async () => {
         {
             type:"list",
             name: "last_name",
-            Message: "SELECT LAST NAME",
+            message: "SELECT LAST NAME",
             choices: employee[0].map((obj) => ({name: obj.last_name, value: obj.id}))
         },
         {
             type:"list",
             name: "roles_id",
-            Message: "SELECT ROLE",
+            message: "SELECT ROLE",
             choices: roles[0].map((obj) => ({name: obj.title, value: obj.id}))
         },
     ]); //got some pointers from chuck on how to structure this

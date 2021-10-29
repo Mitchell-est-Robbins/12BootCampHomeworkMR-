@@ -118,7 +118,7 @@ const showRole = async () => {
 //   and managers that the employees report to
 
 const showEmployees = async () => {  //----------need to figure manager out-------
-    const employee= await db.promise().query("SELECT employee.id, employee.first_name, employee.last_name, roles.title, roles.salary, department.dept FROM employee JOIN roles on employee.roles_id=roles.id JOIN department ON department.id= roles.dept_id")
+    const employee= await db.promise().query("SELECT employee.id, roles.title, employee.last_name, employee.first_name,  department.dept,  roles.salary, manager.last_name AS manager FROM employee  JOIN roles ON roles.id=employee.roles_id  JOIN department ON department.id=roles.dept_id LEFT JOIN employee manager ON manager.id=employee.manager_id")
     console.table(employee[0]);
     console.log ("====================================================")
     console.log ("===------------EMPLOYEE DETAILS------------------===")
@@ -165,7 +165,7 @@ const plusRole = async () => {
             message: "INPUT NUMERIC SALARY"
         },
         {
-            type:"list",                 //-----got pointers on map functions from chuck-----somehow call back to db and select from list
+            type:"list",                 //-----got pointers on map functions from chuck-----
             name: "dept_id",
             message: " SELECT THE SECTION ",
             choices: section[0].map((dept) => ({name: dept.dept, value: dept.id}))

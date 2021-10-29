@@ -17,16 +17,16 @@
 
 [Contact-me](#contact-me)
 
-[Ideas-for-improvement](#ideas-for-improvement)
+
 
 -------
 
 ## **Description** 
-An easy to use tool for generating professional READMEs; quickly, for new projects
+A tool for tracking the personnel of an up and coming mercenary company in some sort of scifi universe. Any similarity in name is a coincidence.  
 
 --------
 
-https://watch.screencastify.com/v/ebeCgPNv81ITMhh6mmjx
+Link: to the video walkthrough
 
 ---------
 
@@ -44,7 +44,13 @@ https://watch.screencastify.com/v/ebeCgPNv81ITMhh6mmjx
 ## **Questions:**
 
 ### **What licenses are needed?**
-NPM, Inquirer
+    "NPM"   
+    "console.table": "^0.10.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "hide-secrets": "^2.0.0",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.2"
 
 
 ### **Installation**
@@ -66,8 +72,4 @@ You cannot contribute
 
 ## **Contact me:**
 ### https://github.com/VookmirVookmir
-###  vookmirvookmir@gmail.com
 
-----------
-
-## **Ideas for improvement:**

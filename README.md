@@ -27,17 +27,38 @@ A tool for tracking the personnel of an up and coming mercenary company in some 
 --------
 
 Link: to the video walkthrough
+https://watch.screencastify.com/v/k3BbYovhRledrxX1aKUX
 
 ---------
 
 ## **Screenshots:**
 
-![Screenshot 1 Landing](Setup.jpg)
+![Screenshot 1 Menu](pictures/12menu.jpg)
+Menu in order
+
+A. View Sections (departments)
+
+B. View Roles
+
+C. View Employees
+
+D. Add Section (department)
+
+E. Add Role
+
+F. Add Employee
+
+G. Update Employee
+
 
 ---------------
 
-![Screenshot 2 Features](Done.jpg)
+![Screenshot 2 Examples](pictures/12example.jpg)
+1. View Section (department)
 
+2. View Roles
+
+3. View Employees
 
 -------
 
